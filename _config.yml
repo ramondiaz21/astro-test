@@ -1,0 +1,20 @@
+# Configuración general
+title: Mi Sitio Web
+description: Descripción de mi sitio web
+url: https://ramondiaz21.github.io/astro-test  # Cambia esto a la URL de tu sitio web
+
+# Configuración de GitHub Pages
+github_username: ramondiaz21
+repository_name: astro-test
+branch: main  # Cambia esto si tu rama principal tiene un nombre diferente
+
+# Plugins
+plugins:
+  - jekyll-feed
+  # Otros plugins que desees utilizar
+
+# Tema
+theme: jekyll-theme-primer  # Cambia esto al nombre del tema que estés utilizando
+
+# Opciones adicionales
+markdown: kramdown
