@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 
 const { slug } = Astro.params;
 
-let res = await fetch(`https://norian.studio/wp-json/wp/v2/dinos?slug=${slug}`);
+let res = await fetch(`https://margaritamexicanhouse.com/wp-json/wp/v2/posts?slug=${slug}`);
 let [post] = await res.json();
 
 // The getStaticPaths() is required for static Astro sites.
 // If using SSR, you will not need this function.
 export async function getStaticPaths() {
-  let data = await fetch("https://norian.studio/wp-json/wp/v2/dinos");
+  let data = await fetch("https://margaritamexicanhouse.com/wp-json/wp/v2/posts");
   let posts = await data.json();
 
   return posts.map((post:any) => ({
@@ -20,6 +20,7 @@ export async function getStaticPaths() {
 ---
 <Layout title={post.title.rendered}>
   <article>
+    	<img style="width:30vw" src={post.jetpack_featured_media_url} />
     <h1 set:html={post.title.rendered} />
     <Fragment set:html={post.content.rendered} />
   </article>

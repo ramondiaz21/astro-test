@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-let res = await fetch("https://norian.studio/wp-json/wp/v2/dinos");
+let res = await fetch("https://margaritamexicanhouse.com/wp-json/wp/v2/posts");
 let posts = await res.json();
 ---
 <Layout title="Dinos!">
@@ -10,6 +10,9 @@ let posts = await res.json();
     {
       posts.map((post:any) => (
         <article>
+					<a href={`${post.slug}/`}>	
+					<img style="width:30vw" src={post.jetpack_featured_media_url} />
+					</a>
           <h2>
             <a href={`${post.slug}/`} set:html={post.title.rendered} />
           </h2>
