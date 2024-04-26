@@ -1,9 +1,25 @@
 ---
+import Layout from "../layouts/Layout.astro";
+
+let res = await fetch("https://norian.studio/wp-json/wp/v2/dinos");
+let posts = await res.json();
+---
+<!-- ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import MySlider from '../components/Carousel.astro';
+const res = await fetch("https://margaritamexicanhouse.com/wp-json/wp/v2/posts");
+const posts = await res.json();
 ---
 
 <Layout title="Welcome to Astro.">
+	<h1>Astro + WordPress 🚀</h1>
+{
+  posts.map((post:any) => (
+      <h2 set:html={post.title.rendered} />
+      <p set:html={post.content.rendered} />
+  ))
+}
 	<main>
 		<svg
 			class="astro-a"
@@ -120,4 +136,20 @@ import Card from '../components/Card.astro';
 		gap: 2rem;
 		padding: 0;
 	}
-</style>
+</style> -->
+
+<Layout title="Dinos!">
+  <section>
+    <h1>List of Dinosaurs</h1>
+    {
+      posts.map((post:any) => (
+        <article>
+          <h2>
+            <a href={`/dinos/${post.slug}/`} set:html={post.title.rendered} />
+          </h2>
+          <Fragment set:html={post.content.rendered} />
+        </article>
+      ))
+    }
+  </section>
+</Layout>
