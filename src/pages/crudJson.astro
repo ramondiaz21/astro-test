@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+let res = await fetch("https://margaritamexicanhouse.com/wp-json/wp/v2/posts");
+let posts = await res.json();
+---
+
+<Layout title="crudJson">
+  <section>
+  </section>
+</Layout>
