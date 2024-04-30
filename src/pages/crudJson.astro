@@ -1,11 +1,66 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-let res = await fetch("https://margaritamexicanhouse.com/wp-json/wp/v2/posts");
-let posts = await res.json();
 ---
 
 <Layout title="crudJson">
-  <section>
+  <section class="crudJson">
+    <div class="container">
+      <form class="" action="" id="form" method="post">
+        <input type="text" id="title" class="form-control" placeholder="Title">
+        <input type="text" id="body" class="form-control" placeholder="Body">
+        <input type="number" id="id" class="form-control" placeholder="Id">
+        <button type="submit" class="btn btn-warning" style="color:white">Editar</button>
+      </form>
+      <!-- Div donde se mostrará la respuesta del servidor -->
+      <div id="response"></div>
+    </div>
   </section>
 </Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("form") as HTMLFormElement;
+    if (form) {
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const titleInput = document.getElementById("title") as HTMLInputElement;
+        const bodyInput = document.getElementById("body") as HTMLInputElement;
+        const idInput = document.getElementById("id") as HTMLInputElement;
+        if (titleInput && bodyInput && idInput) {
+          const title = titleInput.value;
+          const body = bodyInput.value;
+          const number = idInput.value;
+          fetch("https://jsonplaceholder.typicode.com/posts", {
+              method: "POST",
+              body: JSON.stringify({
+                title: title,
+                body: body,
+                number: number,
+              }),
+              headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+              },
+            })
+            .then(response => response.json())
+            .then(data => {
+              // Mostrar el contenido del response en un div con id "response"
+              const responseDiv = document.getElementById("response");
+              if (responseDiv) {
+                responseDiv.innerHTML = `
+                <div style="background-color: #f0f0f0; padding: 10px;">
+                  <h2>Title: ${data.title}</h2>
+                  <p>Body: ${data.body}</p>
+                  <p>Number: ${data.number}</p>
+                </div>
+              `
+              }
+            })
+            .catch(error => {
+              // Manejar cualquier error que pueda ocurrir durante la solicitud
+              console.error('Error:', error);
+            });
+        }
+      });
+    }
+  });
+</script>

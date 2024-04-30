@@ -3,7 +3,29 @@
     color: yellow;
   }
 }
- 
-* {
-  color:white;
+
+body {
+  min-height: 100vh;
+}
+
+.crudJson {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color:black;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn {
+    width: fit-content;
+  }
+
+  .response {
+    color:black
+  }
 }

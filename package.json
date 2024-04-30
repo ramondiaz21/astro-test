@@ -11,9 +11,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@popperjs/core": "^2.11.8",
     "@splidejs/splide": "^4.1.4",
+    "@types/bootstrap": "^5.2.10",
     "astro": "^4.6.3",
+    "astro-bootstrap": "^0.6.2",
+    "bootstrap": "^5.3.3",
     "sass": "^1.75.0",
+    "solid-toast": "^0.5.0",
     "stylus": "^0.63.0",
     "typescript": "^5.4.5"
   }
